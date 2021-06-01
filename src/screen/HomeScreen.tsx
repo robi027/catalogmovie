@@ -9,7 +9,7 @@ export default class HomeScreen extends BaseComponent<Routes.HOME> {
     return (
       <View>
         <Text>Robi Dwi Setiawan</Text>
-        <TouchableOpacity onPress={() => VNav.popular(this.props.navigation)}>
+        <TouchableOpacity onPress={() => VNav.detail(this.props.navigation)}>
           <Text>Popular</Text>
         </TouchableOpacity>
       </View>

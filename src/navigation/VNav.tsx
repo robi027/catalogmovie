@@ -4,7 +4,7 @@ import { Routes, RootStackParamsList } from "./MainNavigation";
 type NavigationProp = StackNavigationProp<RootStackParamsList, Routes>;
 
 export default class VNav {
-  static popular(navigation: NavigationProp) {
-    navigation.navigate(Routes.POPULAR);
+  static detail(navigation: NavigationProp) {
+    navigation.navigate(Routes.DETAIL);
   }
 }
