@@ -8,6 +8,8 @@ import {
 } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
 import PopularScreen from "./PopularScreen";
+import styles from "../config/styles";
+import colors from "../config/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,18 +29,13 @@ export default class MainBottomNavigation extends BaseComponent<
     const { routes, index } = props.state;
     return (
       <View
-        style={{
-          flexDirection: "row",
-          backgroundColor: "white",
-          shadowColor: "#000",
-          shadowOffset: {
-            width: 0,
-            height: 5,
+        style={[
+          {
+            flexDirection: "row",
+            backgroundColor: colors.white,
           },
-          shadowOpacity: 0.34,
-          shadowRadius: 6.27,
-          elevation: 10,
-        }}
+          styles.shadow,
+        ]}
       >
         {routes.map((route, indexRoute) => {
           const isFocused = index === indexRoute;
