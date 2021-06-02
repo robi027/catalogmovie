@@ -9,15 +9,15 @@ import MainBottomNavigation from "../screen/MainBottomNavigation";
 import DetailScreen from "../screen/DetailScreen";
 
 export enum Routes {
-  HOME = "Home",
-  POPULAR = "Popular",
+  MOVIE = "Movie",
+  TV = "TV",
   BOTTOM_NAVIGATION = "BottomNavigation",
   DETAIL = "Detail",
 }
 
 export type RootStackParamsList = {
-  [Routes.HOME]: undefined;
-  [Routes.POPULAR]: { data?: object } | undefined;
+  [Routes.MOVIE]: undefined;
+  [Routes.TV]: { data?: object } | undefined;
   [Routes.BOTTOM_NAVIGATION]: undefined;
   [Routes.DETAIL]: undefined;
 };

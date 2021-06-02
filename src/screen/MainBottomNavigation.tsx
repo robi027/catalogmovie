@@ -1,26 +1,28 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import { Routes } from "../navigation/MainNavigation";
 import {
   BottomTabBarProps,
   createBottomTabNavigator,
 } from "@react-navigation/bottom-tabs";
-import HomeScreen from "./HomeScreen";
-import PopularScreen from "./PopularScreen";
+import MovieScreen from "./MovieScreen";
+import TVScreen from "./TVScreen";
 import styles from "../config/styles";
 import colors from "../config/colors";
+import images from "../config/images";
 
 const Tab = createBottomTabNavigator();
 
+const iconImage = [images.back, images.back];
 export default class MainBottomNavigation extends BaseComponent<
   Routes.BOTTOM_NAVIGATION
 > {
   render() {
     return (
       <Tab.Navigator tabBar={(props) => this.item(props)}>
-        <Tab.Screen name={"Home"} component={HomeScreen} />
-        <Tab.Screen name={"Popular"} component={PopularScreen} />
+        <Tab.Screen name={"Movie"} component={MovieScreen} />
+        <Tab.Screen name={"TV"} component={TVScreen} />
       </Tab.Navigator>
     );
   }
@@ -61,6 +63,15 @@ export default class MainBottomNavigation extends BaseComponent<
               }}
               onPress={onPress}
             >
+              <Image
+                source={iconImage[index]}
+                style={{
+                  height: 16,
+                  width: 16,
+                  tintColor: isFocused ? "red" : "black",
+                }}
+              />
+              <View style={{ marginVertical: 2 }} />
               <Text style={{ color: isFocused ? "red" : "black" }}>
                 {route.name}
               </Text>
