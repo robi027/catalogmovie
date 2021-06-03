@@ -9,14 +9,21 @@ import {
 } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import styles from "../config/styles";
-import { Routes } from "../navigation/MainNavigation";
+import { Prop, Routes } from "../navigation/MainNavigation";
 
 import MovieHorizontalItem from "../components/MovieHorizontalItem";
 import MovieVerticalItem from "../components/MovieVerticalItem";
 import { connect } from "react-redux";
 import { get } from "../actions/movie.action";
 
-class MovieScreen extends BaseComponent<Routes.MOVIE> {
+type Props = Prop<Routes.MOVIE> & {
+  get: () => void;
+};
+class MovieScreen extends BaseComponent<Props> {
+  constructor(props: Props) {
+    super(props);
+  }
+
   render() {
     return (
       <ScrollView
