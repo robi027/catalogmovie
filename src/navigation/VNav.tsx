@@ -7,4 +7,8 @@ export default class VNav {
   static detail(navigation: NavigationProp) {
     navigation.navigate(Routes.DETAIL);
   }
+
+  static main(navigation: NavigationProp) {
+    navigation.replace(Routes.BOTTOM_NAVIGATION);
+  }
 }

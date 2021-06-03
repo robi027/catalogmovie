@@ -30,6 +30,11 @@ export default StyleSheet.create({
     fontSize: 32,
     fontFamily: fonts.bold,
   },
+  t32BoldPink: {
+    fontSize: 32,
+    fontFamily: fonts.bold,
+    color: colors.pink,
+  },
   shadow: {
     shadowColor: "#000",
     shadowOffset: {
