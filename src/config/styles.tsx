@@ -4,7 +4,7 @@ import fonts from "./fonts";
 
 export default StyleSheet.create({
   t12Grey: {
-    fontSize: 14,
+    fontSize: 12,
     color: colors.grey,
   },
   t14: {
