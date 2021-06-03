@@ -9,12 +9,21 @@ import {
 } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import styles from "../config/styles";
-import { Routes } from "../navigation/MainNavigation";
+import { Prop, Routes } from "../navigation/MainNavigation";
 
-import MovieHorizontalItem from "../component/MovieHorizontalItem";
-import MovieVerticalItem from "../component/MovieVerticalItem";
+import MovieHorizontalItem from "../components/MovieHorizontalItem";
+import MovieVerticalItem from "../components/MovieVerticalItem";
+import { connect } from "react-redux";
+import { get } from "../actions/movie.action";
 
-export default class MovieScreen extends BaseComponent<Routes.MOVIE> {
+type Props = Prop<Routes.MOVIE> & {
+  get: () => void;
+};
+class MovieScreen extends BaseComponent<Props> {
+  constructor(props: Props) {
+    super(props);
+  }
+
   render() {
     return (
       <ScrollView
@@ -26,7 +35,9 @@ export default class MovieScreen extends BaseComponent<Routes.MOVIE> {
         <View style={{ flex: 1 }}>
           <View style={{ margin: 20 }}>
             <Text style={styles.t32Bold}>Hello,</Text>
-            <Text style={styles.t20Grey}>Looking Your Movie</Text>
+            <TouchableOpacity onPress={() => this.props.get()}>
+              <Text style={styles.t20Grey}>Looking Your Movie</Text>
+            </TouchableOpacity>
           </View>
           <FlatList
             contentContainerStyle={{ paddingHorizontal: 20 }}
@@ -64,3 +75,11 @@ export default class MovieScreen extends BaseComponent<Routes.MOVIE> {
     );
   }
 }
+
+const mapStateToProps = (state: any) => {
+  return {
+    movie: state.Movie,
+  };
+};
+
+export default connect(mapStateToProps, { get })(MovieScreen);
