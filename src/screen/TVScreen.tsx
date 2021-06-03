@@ -3,7 +3,7 @@ import { Text, View, FlatList } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import styles from "../config/styles";
 import { Routes } from "../navigation/MainNavigation";
-import MovieHorizontalItem from "../component/MovieHorizontalItem";
+import MovieHorizontalItem from "../components/MovieHorizontalItem";
 
 export default class TVScreen extends BaseComponent<Routes.TV> {
   render() {
