@@ -27,7 +27,7 @@ export default class MovieVerticalItem extends Component<Props> {
           }}
         >
           <Image
-            source={{ uri: env.PATH_IMAGE + "/" + data.poster_path }}
+            source={{ uri: env.PATH_IMAGE + data.poster_path }}
             style={{
               height: 75,
               width: 65,
