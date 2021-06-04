@@ -64,7 +64,7 @@ class MovieScreen extends BaseComponent<Props, State> {
           <View style={{ margin: 20 }}>
             <Text style={styles.t32Bold}>Hello,</Text>
             <TouchableOpacity onPress={() => {}}>
-              <Text style={styles.t20Grey}>Found your favorite movie</Text>
+              <Text style={styles.t20Grey}>Find your favorite movie</Text>
             </TouchableOpacity>
           </View>
 
@@ -78,9 +78,6 @@ class MovieScreen extends BaseComponent<Props, State> {
               }}
             >
               <Text style={styles.t20Bold}>Popular</Text>
-              <TouchableOpacity onPress={() => {}}>
-                <Text style={styles.t12Grey}>See All</Text>
-              </TouchableOpacity>
             </View>
 
             <View style={{ marginVertical: 8 }} />

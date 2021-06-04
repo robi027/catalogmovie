@@ -14,7 +14,7 @@ import images from "../config/images";
 
 const Tab = createBottomTabNavigator();
 
-const iconImage = [images.back, images.back];
+const iconImage = [images.film, images.television];
 export default class MainBottomNavigation extends BaseComponent<
   Routes.BOTTOM_NAVIGATION
 > {
@@ -64,15 +64,15 @@ export default class MainBottomNavigation extends BaseComponent<
               onPress={onPress}
             >
               <Image
-                source={iconImage[index]}
+                source={iconImage[indexRoute]}
                 style={{
                   height: 16,
                   width: 16,
-                  tintColor: isFocused ? "red" : "black",
+                  tintColor: isFocused ? colors.pink : colors.black,
                 }}
               />
               <View style={{ marginVertical: 2 }} />
-              <Text style={{ color: isFocused ? "red" : "black" }}>
+              <Text style={{ color: isFocused ? colors.pink : colors.black }}>
                 {route.name}
               </Text>
             </TouchableOpacity>
