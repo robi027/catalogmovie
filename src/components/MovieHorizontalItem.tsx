@@ -26,7 +26,7 @@ export default class MovieHorizontalItem extends Component<Props> {
           }}
         >
           <Image
-            source={{ uri: env.PATH_IMAGE + "/" + image }}
+            source={{ uri: env.PATH_IMAGE + image }}
             style={{
               height: 175,
               width: 130,
