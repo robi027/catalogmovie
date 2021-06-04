@@ -18,11 +18,12 @@ export default class MovieVerticalItem extends Component<Props> {
         style={{ flexDirection: "row", marginBottom: 8, alignItems: "center" }}
       >
         <ImageBackground
-          source={images.back}
+          source={images.imageNotFound}
           style={{
             height: 75,
             width: 65,
             borderRadius: 8,
+            overflow: "hidden",
           }}
         >
           <Image
@@ -31,6 +32,7 @@ export default class MovieVerticalItem extends Component<Props> {
               height: 75,
               width: 65,
               borderRadius: 8,
+              overflow: "hidden",
             }}
           />
         </ImageBackground>

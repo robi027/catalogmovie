@@ -17,7 +17,7 @@ export default class MovieHorizontalItem extends Component<Props> {
     return (
       <View>
         <ImageBackground
-          source={images.back}
+          source={images.imageNotFound}
           style={{
             height: 175,
             width: 130,
