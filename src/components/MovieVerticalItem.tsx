@@ -23,6 +23,7 @@ export default class MovieVerticalItem extends Component<Props> {
             height: 75,
             width: 65,
             borderRadius: 8,
+            overflow: "hidden",
           }}
         >
           <Image
@@ -31,6 +32,7 @@ export default class MovieVerticalItem extends Component<Props> {
               height: 75,
               width: 65,
               borderRadius: 8,
+              overflow: "hidden",
             }}
           />
         </ImageBackground>
