@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Image, ImageBackground, Text, View } from "react-native";
+import {
+  Image,
+  ImageBackground,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import images from "../config/images";
 import styles from "../config/styles";
 import { AirbnbRating } from "react-native-ratings";
@@ -9,13 +15,14 @@ type Props = {
   image?: string;
   rating?: number;
   title?: string;
+  onPress: () => void;
 };
 
 export default class MovieHorizontalItem extends Component<Props> {
   render() {
-    const { image, rating, title } = this.props;
+    const { image, rating, title, onPress } = this.props;
     return (
-      <View>
+      <TouchableOpacity onPress={() => onPress()}>
         <ImageBackground
           source={images.imageNotFound}
           style={{
@@ -48,7 +55,7 @@ export default class MovieHorizontalItem extends Component<Props> {
             starContainerStyle={{ paddingRight: 0 }}
           />
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

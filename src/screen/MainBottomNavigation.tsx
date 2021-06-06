@@ -1,7 +1,10 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import BaseComponent from "../common/BaseComponent";
-import { Routes } from "../navigation/MainNavigation";
+import {
+  Prop,
+  Routes,
+} from "../navigation/MainNavigation";
 import {
   BottomTabBarProps,
   createBottomTabNavigator,
@@ -15,9 +18,14 @@ import images from "../config/images";
 const Tab = createBottomTabNavigator();
 
 const iconImage = [images.film, images.television];
-export default class MainBottomNavigation extends BaseComponent<
-  Routes.BOTTOM_NAVIGATION
-> {
+
+type Props = Prop<Routes.BOTTOM_NAVIGATION>;
+
+export default class MainBottomNavigation extends BaseComponent<Props> {
+  constructor(props: Props) {
+    super(props);
+  }
+
   render() {
     return (
       <Tab.Navigator tabBar={(props) => this.item(props)}>

@@ -2,9 +2,14 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import images from "../config/images";
-import { Routes } from "../navigation/MainNavigation";
+import { Prop, Routes } from "../navigation/MainNavigation";
 
-export default class DetailScreen extends BaseComponent<Routes.DETAIL> {
+type Props = Prop<Routes.DETAIL>;
+export default class DetailScreen extends BaseComponent<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.print(this.props.route.params.data);
+  }
   render() {
     return (
       <View style={{ flexDirection: "row" }}>

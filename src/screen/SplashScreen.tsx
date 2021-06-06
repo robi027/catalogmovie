@@ -4,7 +4,6 @@ import BaseComponent from "../common/BaseComponent";
 import colors from "../config/colors";
 import styles from "../config/styles";
 import { Prop, Routes } from "../navigation/MainNavigation";
-import VNav from "../navigation/VNav";
 
 type Props = Prop<Routes.SPLASH> & {};
 
@@ -15,7 +14,7 @@ export default class SplashScreen extends BaseComponent<Props> {
 
   componentDidMount() {
     setTimeout(() => {
-      VNav.main(this.props.navigation);
+      this.props.navigation.push(Routes.BOTTOM_NAVIGATION);
     }, 1000);
   }
 

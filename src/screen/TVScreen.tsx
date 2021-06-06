@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, FlatList } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import styles from "../config/styles";
-import { Routes, Prop } from "../navigation/MainNavigation";
+import { Routes, PropBottomNavigation } from "../navigation/MainNavigation";
 import MovieHorizontalItem from "../components/MovieHorizontalItem";
 import { connect } from "react-redux";
 import { getAiring, getPopular } from "../actions/tv.action";
@@ -10,7 +10,7 @@ import { isEmpty } from "../utils/utils";
 import LoadingItem from "../components/LoadingItem";
 import EmptyItem from "../components/EmptyItem";
 
-type Props = Prop<Routes.TV> & {
+type Props = PropBottomNavigation<Routes.TV> & {
   getAiring: () => void;
   getPopular: () => void;
   tv: any;
@@ -90,6 +90,9 @@ class TVScreen extends BaseComponent<Props, State> {
             title={item.original_name}
             rating={item.vote_average}
             image={item.poster_path}
+            onPress={() =>
+              this.props.navigation.navigate(Routes.DETAIL, { data: "tv" })
+            }
           />
         )}
         keyExtractor={(item, index) => "item_" + index}
@@ -119,6 +122,9 @@ class TVScreen extends BaseComponent<Props, State> {
             title={item.original_name}
             rating={item.vote_average}
             image={item.poster_path}
+            onPress={() =>
+              this.props.navigation.navigate(Routes.DETAIL, { data: "tv" })
+            }
           />
         )}
         keyExtractor={(item, index) => "item_" + index}
