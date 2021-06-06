@@ -5,11 +5,14 @@ import {
   TouchableOpacity,
   FlatList,
   ScrollView,
-  RefreshControl,
+  RefreshControl,  
 } from "react-native";
 import BaseComponent from "../common/BaseComponent";
 import styles from "../config/styles";
-import { Prop, Routes } from "../navigation/MainNavigation";
+import {
+  PropBottomNavigation,
+  Routes,
+} from "../navigation/MainNavigation";
 
 import MovieHorizontalItem from "../components/MovieHorizontalItem";
 import MovieVerticalItem from "../components/MovieVerticalItem";
@@ -19,7 +22,7 @@ import LoadingItem from "../components/LoadingItem";
 import EmptyItem from "../components/EmptyItem";
 import { isEmpty } from "../utils/utils";
 
-type Props = Prop<Routes.MOVIE> & {
+type Props = PropBottomNavigation<Routes.MOVIE> & {
   getPopular: () => void;
   getNowPlaying: () => void;
   movie?: any;
@@ -28,12 +31,26 @@ type Props = Prop<Routes.MOVIE> & {
 interface State {
   firstOpened: boolean;
 }
+
 class MovieScreen extends BaseComponent<Props, State> {
+  private svRef: React.RefObject<ScrollView> = React.createRef<ScrollView>();
+  private doublePress = 0;
+
   constructor(props: Props) {
     super(props);
     this.state = {
       firstOpened: true,
     };
+    this.props.navigation.addListener("tabPress", (e) => {
+      this.doublePress++;
+      if (this.doublePress === 2) {
+        this.svRef.current?.scrollTo({ y: 0 });
+      } else {
+        setTimeout((_) => {
+          this.doublePress = 0;
+        }, 500);
+      }
+    });
   }
 
   componentDidMount() {
@@ -50,6 +67,7 @@ class MovieScreen extends BaseComponent<Props, State> {
     const { firstOpened } = this.state;
     return (
       <ScrollView
+        ref={this.svRef}
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl
@@ -63,7 +81,7 @@ class MovieScreen extends BaseComponent<Props, State> {
         <View style={{ flex: 1 }}>
           <View style={{ margin: 20 }}>
             <Text style={styles.t32Bold}>Hello,</Text>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={() => this.svRef.current?.scrollToEnd()}>
               <Text style={styles.t20Grey}>Find your favorite movie</Text>
             </TouchableOpacity>
           </View>
@@ -122,6 +140,9 @@ class MovieScreen extends BaseComponent<Props, State> {
             image={item.poster_path}
             rating={item.vote_average}
             title={item.original_title}
+            onPress={() =>
+              this.props.navigation.navigate(Routes.DETAIL, { data: "Robi" })
+            }
           />
         )}
         keyExtractor={(item, index) => "item_" + index}
